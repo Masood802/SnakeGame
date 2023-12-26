@@ -19,7 +19,7 @@ export class Snake {
     if (firstBox.row === 0) return;
 
     for (let box of this.boxes) {
-      box.move(direction, this.head);
+      box.move(direction);
     }
     console.log("first", this.firstBox);
   }

@@ -1,5 +1,8 @@
 <template>
-  <button class="w-12 h-12" @click="start(arrows[direction])">
+  <button
+    class="w-12 h-12 flex justify-center items-center rounded-full border-2"
+    @click="start(direction)"
+  >
     {{ arrows[direction] }}
   </button>
 </template>
@@ -19,8 +22,5 @@ const arrows = {
 };
 function start(direction) {
   game.direction = direction;
-  setInterval(() => {
-    game.snake.move(game.direction);
-  }, game.speed);
 }
 </script>
