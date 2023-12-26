@@ -8,17 +8,17 @@ export class Box {
   }
   move(direction) {
     switch (direction) {
-      case "▲":
+      case "U":
         this.row--;
-        this.col
+        this.col;
         break;
-      case "▼":
+      case "D":
         this.row++;
         break;
-      case "◀︎":
+      case "L":
         this.col--;
         break;
-      case "▶︎":
+      case "R":
         this.col++;
         break;
     }
