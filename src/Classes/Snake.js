@@ -19,8 +19,10 @@ export class Snake {
       firstBox.col === 0 ||
       firstBox.row === game.totalBoxes - 1 ||
       firstBox.row === 0
-    )
+    ) {
+      game.gameover = true;
       return;
+    }
     firstBox.move(this.direction);
     for (let i = 1; i < this.boxes.length; i++) {
       let box = this.boxes[i];
