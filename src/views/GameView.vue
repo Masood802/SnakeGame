@@ -7,7 +7,6 @@
       <BoxComponet v-for="box in game.snake.boxes" :box="box"></BoxComponet>
       <Buttons></Buttons>
     </div>
-    
   </main>
 </template>
 <script setup>
@@ -20,5 +19,10 @@ import Buttons from "@/components/Buttons.vue";
 let game = useGameStore();
 onBeforeMount(() => {
   game.snake = new Snake();
+});
+onMounted(() => {
+  setInterval(() => {
+    game.snake.move();
+  }, game.speed);
 });
 </script>
