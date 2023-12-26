@@ -21,6 +21,10 @@ const arrows = {
   L: "◀︎",
 };
 function updateDirection() {
+  if (game.snake.direction === "U" && p.direction === "D") return;
+  if (game.snake.direction === "D" && p.direction === "U") return;
+  if (game.snake.direction === "R" && p.direction === "L") return;
+  if (game.snake.direction === "L" && p.direction === "R") return;
   game.snake.direction = p.direction;
 }
 </script>
