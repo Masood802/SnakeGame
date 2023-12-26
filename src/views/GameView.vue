@@ -1,7 +1,7 @@
 <template>
   <main class="flex items-center justify-center h-[100vh]">
     <div
-      class="bg-gray-300 relative"
+      class="bg-gray-300 relative bg-[url('./pix/bkg.jpg')] bg-cover bg-center"
       :style="{ width: game.gridSize + 'px', height: game.gridSize + 'px' }"
     >
       <BoxComponet v-for="box in game.snake.boxes" :box="box"></BoxComponet>
