@@ -1,7 +1,7 @@
 <template>
   <button
     class="w-12 h-12 flex justify-center items-center rounded-full border-2"
-    @click="start(direction)"
+    @click="updateDirection(direction)"
   >
     {{ arrows[direction] }}
   </button>
@@ -20,7 +20,7 @@ const arrows = {
   R: "▶︎",
   L: "◀︎",
 };
-function start(direction) {
-  game.direction = direction;
+function updateDirection() {
+  game.snake.direction = p.direction;
 }
 </script>
