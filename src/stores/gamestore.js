@@ -6,6 +6,7 @@ export const useGameStore = defineStore("game", {
     totalBoxes: 20,
     speed: 500, // in ms
     snake: null,
+    direction:''
   }),
   getters: {
     gridSize() {

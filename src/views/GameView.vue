@@ -21,9 +21,4 @@ let game = useGameStore();
 onBeforeMount(() => {
   game.snake = new Snake();
 });
-onMounted(() => {
-  setInterval(() => {
-    game.snake.move();
-  }, game.speed);
-});
 </script>
