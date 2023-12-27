@@ -1,9 +1,15 @@
 export class FoodItem {
   row = 0;
   col = 0;
-  color = "blue";
-  constructor(row, col, color) {
+  colorlist = ["blue", "green", "yellow", "red"];
+  color=this.getRandomColor(this.colorlist)
+  constructor(row, col) {
     this.row = row;
     this.col = col;
   }
+  getRandomColor(array) {
+    return array[Math.floor(Math.random() * array.length)];
+  }
+
+
 }

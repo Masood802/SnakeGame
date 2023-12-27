@@ -30,7 +30,6 @@ export const useGameStore = defineStore("game", {
     GameEnd() {
       this.gameover = true;
       window.location.reload();
-    
     },
   },
 });
