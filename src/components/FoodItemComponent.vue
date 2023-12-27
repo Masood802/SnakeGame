@@ -1,5 +1,7 @@
 <template>
-  <img src="/pix/blueLink.png" alt="" class="absolute" :style="Newstyles" />
+  <img :src="`/pix/${game.Fooditem.color}Link.png`" 
+  alt="" class="absolute" 
+  :style="Newstyles" />
 </template>
 
 <script setup>
