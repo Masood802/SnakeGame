@@ -1,6 +1,6 @@
 <template>
   <button
-    class="w-12 h-12 flex justify-center items-center rounded-full border-2"
+    class="w-12 h-12 flex justify-center items-center rounded-full border border-gray-600"
     @click="game.updateDirection(direction)"
   >
     {{ arrows[direction] }}
