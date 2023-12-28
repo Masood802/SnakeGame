@@ -35,10 +35,12 @@ export class Snake {
       return;
     }
     head.move(this.direction);
+
     if (head.row === game.Fooditem.row && head.col === game.Fooditem.col) {
       this.eatFood();
       return;
     }
+    this.checksnakeClash();
     this.updatePosition();
   }
   eatFood() {
@@ -46,18 +48,26 @@ export class Snake {
     let newBox = new Box();
     newBox.color = game.Fooditem.color;
     this.boxes.splice(1, 0, newBox);
-    SoundHelper.play("Crunch");
-    if (
-      this.boxes[1].color === this.boxes[2].color &&
-      this.boxes[2].color === this.boxes[3].color
-    )
-      this.CheckConsectiveBoxes();
+    this.CheckConsectiveBoxes();
     newBox.follow(this.head);
     for (let i = 2; i < this.boxes.length; i++) {
       let box = this.boxes[i];
       box.Gotolastpositon();
     }
+    game.score += 50;
     game.CreateFoodItem();
+    game.StartFoodTimer();
+    SoundHelper.play("Crunch");
+  }
+  checksnakeClash() {
+    let game = useGameStore();
+    for (let i = 1; i < this.boxes.length; i++) {
+      if (
+        this.head.row === this.boxes[i].row &&
+        this.head.col === this.boxes[i].col
+      )
+        game.gameover = true;
+    }
   }
   updatePosition() {
     for (let i = 1; i < this.boxes.length; i++) {
