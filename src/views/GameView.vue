@@ -25,6 +25,7 @@ import { Snake } from "../Classes/Snake.js";
 import Buttons from "@/components/Buttons.vue";
 import Gameoverpopup from "@/components/Gameoverpopup.vue";
 import Gamepausepopup from "@/components/Gamepausepopup.vue";
+import { SoundHelper } from "@/Helpers/SoundHelper";
 
 let game = useGameStore();
 onBeforeMount(() => {
@@ -32,6 +33,7 @@ onBeforeMount(() => {
   game.CreateFoodItem();
 });
 onMounted(() => {
+  SoundHelper.loadSounds()
   setInterval(() => {
     if (game.paused || game.gameover) return;
     game.snake.move();
@@ -39,6 +41,7 @@ onMounted(() => {
   setInterval(() => {
     if (game.paused || game.gameover) return;
     game.CreateFoodItem();
-  }, 5000);
+  }, 15000);
+  document.addEventListener('keydown',game.HandleKeyboadEvents)
 });
 </script>
