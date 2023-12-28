@@ -1,8 +1,9 @@
 <template>
   <main
-    class="flex items-center justify-center h-[100vh]"
+    class="flex items-center justify-center h-screen w-screen bg-[#364532]"
     @click.stop="() => {}"
   >
+    
     <div
       id="game-board"
       class="bg-gray-300 relative rounded-md bg-[url('./pix/bkg.jpg')] bg-cover bg-center"
@@ -12,6 +13,9 @@
       <BoxComponet v-for="box in game.snake.boxes" :box="box"></BoxComponet>
       <FoodItemComponent></FoodItemComponent>
       <Buttons></Buttons>
+      <div class="fixed top-10 right-20">
+      <h1 class="text-white text-3xl text-left">Score:{{ game.score }}</h1>
+    </div>
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>
     </div>
@@ -34,15 +38,10 @@ onBeforeMount(() => {
   game.CreateFoodItem();
 });
 onMounted(() => {
-  SoundHelper.loadSounds()
-  setInterval(() => {
-    if (game.paused || game.gameover) return;
-    game.snake.move();
-  }, game.speed);
-  setInterval(() => {
-    if (game.paused || game.gameover) return;
-    game.CreateFoodItem();
-  }, 15000);
-  document.addEventListener('keydown',game.HandleKeyboadEvents)
+  SoundHelper.loadSounds();
+  game.StartSnakeTimer();
+  game.StartFoodTimer();
+  document.addEventListener("keydown", game.HandleKeyboadEvents);
+  window.addEventListener("resize", game.gameBoardResize());
 });
 </script>

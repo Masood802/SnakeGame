@@ -6,7 +6,7 @@ export class Box {
   lastrow = 0;
   color = "green";
 
-  constructor(row, col, color) {
+  constructor(row, col, color = "red") {
     this.row = row;
     this.col = col;
     this.color = color;

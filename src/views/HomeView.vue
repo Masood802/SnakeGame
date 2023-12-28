@@ -2,12 +2,12 @@
 
 <template>
   <main
-    class="bg-[url(./pix/peakpx.jpg)] flex-col bg-cover all-center flex h-[100vh] w-[100vw]"
+    class="bg-[url(./pix/peakpx.jpg)] flex-col bg-cover all-center flex h-screen w-screen relative"
   >
     <img
       src="../../public/pix/title.png"
       alt=""
-      class="absolute top-24 w-[40vw]"
+      class="absolute top-8"
     />
     <RouterLink
       to="/game-view"
