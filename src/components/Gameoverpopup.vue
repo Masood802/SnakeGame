@@ -18,6 +18,5 @@
 <script setup>
 import { useGameStore } from "@/stores/gamestore";
 import ThePopup from "./ThePopup.vue";
-import { useRouter } from "vue-router";
 let game = useGameStore();
 </script>
