@@ -3,22 +3,42 @@ import { FoodItem } from "@/Classes/FoodItem";
 
 export const useGameStore = defineStore("game", {
   state: () => ({
-    BoxSize: 30,
+    gridSize: 750,
     totalBoxes: 25,
     speed: 300, // in ms
     snake: null,
     gameover: false,
     paused: false,
     Fooditem: null,
+    snakeTimer: null,
+    foodTimer: null,
+    confettiCanvas: null,
+    score: 0,
+    higScore: 0,
   }),
   getters: {
-    gridSize() {
-      return this.BoxSize * this.totalBoxes;
+    BoxSize() {
+      return this.gridSize / this.totalBoxes;
     },
   },
+
   actions: {
     Restart() {
       window.location.reload();
+    },
+    StartSnakeTimer() {
+      if (this.snakeTimer) clearInterval(this.snakeTimer);
+      this.snakeTimer = setInterval(() => {
+        if (this.paused || this.gameover) return;
+        this.snake.move();
+      }, this.speed);
+    },
+    StartFoodTimer() {
+      if (this.foodTimer) clearInterval(this.foodTimer);
+      this.foodTimer = setInterval(() => {
+        if (this.paused || this.gameover) return;
+        this.CreateFoodItem();
+      }, 15000);
     },
     CreateFoodItem() {
       let row = Math.floor(Math.random() * this.totalBoxes);
@@ -36,10 +56,16 @@ export const useGameStore = defineStore("game", {
       if (this.snake.direction === "L" && direction === "R") return;
       this.snake.direction = direction;
     },
+    gameBoardResize() {
+      this.gridSize = Math.min(window.innerWidth, window.innerHeight);
+    },
     HandleKeyboadEvents(e) {
       const newKey = e.key;
+      if (newKey === "Enter") this.Restart();
+      if (this.gameover) return;
       if (newKey === " ") this.paused = true;
       if (newKey === "Escape") this.paused = false;
+
       const keyPressed = e.key;
       const directions = {
         ArrowUp: "U",
