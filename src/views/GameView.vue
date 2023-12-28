@@ -4,6 +4,7 @@
     @click.stop="() => {}"
   >
     <div
+      id="game-board"
       class="bg-gray-300 relative rounded-md bg-[url('./pix/bkg.jpg')] bg-cover bg-center"
       :style="{ width: game.gridSize + 'px', height: game.gridSize + 'px' }"
       @click.stop="game.paused = true"

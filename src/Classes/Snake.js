@@ -67,6 +67,8 @@ export class Snake {
     }
   }
   CheckConsectiveBoxes() {
+      const game = useGameStore();
+      game.showConfetti(this.boxes[2]);
     this.boxes.splice(1, 3);
   }
 }

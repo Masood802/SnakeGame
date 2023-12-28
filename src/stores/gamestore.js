@@ -51,5 +51,44 @@ export const useGameStore = defineStore("game", {
       if (!direction) return;
       this.updateDirection(direction);
     },
+    async showConfetti(box) {
+      console.log(box);
+      if (!this.confettiCanvas) {
+        let gb = document.querySelector("#game-board");
+        if (!gb) return;
+        this.confettiCanvas = document.createElement("canvas");
+        this.confettiCanvas.style.position = "absolute";
+        this.confettiCanvas.style.left = 0;
+        this.confettiCanvas.style.top = 0;
+        gb.appendChild(this.confettiCanvas);
+      }
+
+      this.confettiCanvas.confetti = await confetti.create(
+        this.confettiCanvas,
+        { resize: true }
+      );
+
+      const colors = {
+        blue: "#1c91c4",
+        yellow: "#e2db1c",
+        green: "#1cac42",
+        red: "#fb0001",
+      };
+
+      this.confettiCanvas.confetti({
+        particleCount: 100,
+        spread: 70,
+        colors: [
+          colors[box.color],
+          colors[box.color],
+          colors[box.color],
+          "#ffffff",
+        ],
+        origin: {
+          x: box.col / this.totalBoxes,
+          y: box.row / this.totalBoxes,
+        },
+      });
+    },
   },
 });
