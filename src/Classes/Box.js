@@ -6,22 +6,31 @@ export class Box {
   lastrow = 0;
   color = "green";
 
-  constructor(row, col) {
-    const game = useGameStore();
+  constructor(row, col, color) {
     this.row = row;
     this.col = col;
+    this.color = color;
   }
-  updatePosition() {
+  get isHead() {
+    const game = useGameStore();
+    return this === game.snake.head;
+  }
+  updatelastPosition() {
     this.lastCol = this.col;
     this.lastrow = this.row;
   }
   follow(box) {
-    this.updatePosition();
+    this.updatelastPosition();
     this.col = box.lastCol;
     this.row = box.lastrow;
   }
+  Gotolastpositon() {
+    this.updatelastPosition();
+    this.col = this.lastCol;
+    this.row = this.lastrow;
+  }
   move(direction) {
-    this.updatePosition();
+    this.updatelastPosition();
     switch (direction) {
       case "U":
         this.row--;
