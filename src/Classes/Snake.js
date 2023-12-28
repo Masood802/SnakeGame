@@ -67,8 +67,15 @@ export class Snake {
     }
   }
   CheckConsectiveBoxes() {
+    if (
+      this.boxes[1].color === this.boxes[2].color &&
+      this.boxes[2].color === this.boxes[3].color
+    ) {
       const game = useGameStore();
       game.showConfetti(this.boxes[2]);
-    this.boxes.splice(1, 3);
+      this.boxes.splice(1, 3);
+      game.score += 100;
+      SoundHelper.play("pop");
+    }
   }
 }
