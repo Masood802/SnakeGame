@@ -57,14 +57,17 @@ export class Snake {
           console.log("speedIncreased", game.speed);
           break;
         case "increase":
+          this.boxes.push(new Box());
           console.log("box added");
           break;
         case "decrease":
+          this.boxes.pop();
           console.log("box poped");
           break;
         case "+200":
           console.log("score boosted");
           game.score += 200;
+          game.CheckHighScore();
           break;
       }
       window.clearInterval(game.sepcialItemTimer);
