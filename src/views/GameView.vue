@@ -4,13 +4,18 @@
     @click.stop="() => {}"
   >
     <div
+      v-if="game.startGame === true"
       id="game-board"
       class="bg-gray-300 relative rounded-md bg-[url('./pix/bkg.jpg')] bg-cover bg-center"
       :style="{ width: game.gridSize + 'px', height: game.gridSize + 'px' }"
       @click.stop="game.paused = true"
     >
       <transition-group name="zoom">
-        <BoxComponet v-for="box in game.snake.boxes" :box="box" :key="box"></BoxComponet>
+        <BoxComponet
+          v-for="box in game.snake.boxes"
+          :box="box"
+          :key="box"
+        ></BoxComponet>
       </transition-group>
       <FoodItemComponent></FoodItemComponent>
       <Buttons></Buttons>
@@ -22,12 +27,19 @@
       </div>
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>
+      <SpecialItem></SpecialItem>
     </div>
+    <div
+      v-if="game.startGame === false"
+      class="bg-[url(./pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
+      @click="game.PlayGame"
+    ></div>
   </main>
 </template>
 <script setup>
 import BoxComponet from "@/components/BoxComponet.vue";
 import FoodItemComponent from "@/components/FoodItemComponent.vue";
+import SpecialItem from "@/components/SpecialItem.vue";
 import { useGameStore } from "@/stores/gamestore";
 import { onBeforeMount, onMounted } from "vue";
 import { Snake } from "../Classes/Snake.js";
@@ -35,17 +47,16 @@ import Buttons from "@/components/Buttons.vue";
 import Gameoverpopup from "@/components/Gameoverpopup.vue";
 import Gamepausepopup from "@/components/Gamepausepopup.vue";
 import { SoundHelper } from "@/Helpers/SoundHelper";
-
 let game = useGameStore();
 onBeforeMount(() => {
   game.snake = new Snake();
   game.CreateFoodItem();
+  game.CreateSpecialItem();
 });
 onMounted(() => {
   SoundHelper.loadSounds();
   // SoundHelper.play("startgame");
-  game.StartSnakeTimer();
-  game.StartFoodTimer();
+
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());
   let data = localStorage.getItem("HighScore");

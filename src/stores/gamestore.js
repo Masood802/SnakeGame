@@ -1,6 +1,7 @@
 import { defineStore } from "pinia";
 import { FoodItem } from "@/Classes/FoodItem";
 import { SoundHelper } from "@/Helpers/SoundHelper";
+import { SpecialItem } from "@/Classes/SpecialItem";
 
 export const useGameStore = defineStore("game", {
   state: () => ({
@@ -16,6 +17,9 @@ export const useGameStore = defineStore("game", {
     confettiCanvas: null,
     score: 0,
     highScore: 0,
+    startGame: false,
+    specialItem: null,
+    sepcialItemTimer: null,
   }),
   getters: {
     BoxSize() {
@@ -23,6 +27,12 @@ export const useGameStore = defineStore("game", {
     },
   },
   actions: {
+    PlayGame() {
+      this.startGame = true;
+      this.StartSnakeTimer();
+      this.StartFoodTimer();
+      this.StartSpecialItemTimer();
+    },
     CheckHighScore() {
       if (this.score > this.highScore) this.highScore = this.score;
       localStorage.setItem("HighScore", this.highScore);
@@ -48,13 +58,28 @@ export const useGameStore = defineStore("game", {
       this.foodTimer = setInterval(() => {
         if (this.paused || this.gameover) return;
         this.CreateFoodItem();
-      }, 15000);
+      }, 10000);
+    },
+    StartSpecialItemTimer() {
+      if (this.sepcialItemTimer) clearInterval(this.sepcialItemTimer);
+      this.sepcialItemTimer = setInterval(() => {
+        if (this.paused || this.gameover) return;
+        this.CreateSpecialItem();
+      }, 8000);
+    },
+    CreateSpecialItem() {
+      let row = Math.floor(Math.random() * this.totalBoxes);
+      let col = Math.floor(Math.random() * this.totalBoxes);
+      this.specialItem = new SpecialItem(row, col);
     },
     CreateFoodItem() {
       let row = Math.floor(Math.random() * this.totalBoxes);
       let col = Math.floor(Math.random() * this.totalBoxes);
       this.Fooditem = new FoodItem(row, col);
     },
+    // RondomNumber() {
+    //   let rand = Math.floor(Math.random() * (8000 - 5000 + 1) + 5000);
+    // },
     GameEnd() {
       this.gameover = true;
       window.location.reload();

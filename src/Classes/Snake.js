@@ -40,8 +40,38 @@ export class Snake {
       this.eatFood();
       return;
     }
+
     this.checksnakeClash();
     this.updatePosition();
+    this.isSpecialItemeaton();
+  }
+  isSpecialItemeaton() {
+    let game = useGameStore();
+    if (
+      this.head.row === game.specialItem.row &&
+      this.head.col === game.specialItem.col
+    ) {
+      switch (game.specialItem.item) {
+        case "cheeta":
+          game.speed -= 25;
+          console.log("speedIncreased", game.speed);
+          break;
+        case "increase":
+          console.log("box added");
+          break;
+        case "decrease":
+          console.log("box poped");
+          break;
+        case "+200":
+          console.log("score boosted");
+          game.score += 200;
+          break;
+      }
+      window.clearInterval(game.sepcialItemTimer);
+      game.CreateSpecialItem();
+      game.StartSpecialItemTimer();
+      return;
+    }
   }
   eatFood() {
     const game = useGameStore();
