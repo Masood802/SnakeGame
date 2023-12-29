@@ -6,7 +6,7 @@ export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
-    speed: 300, // in ms
+    speed: 100, // in ms
     snake: null,
     gameover: false,
     paused: false,
@@ -29,6 +29,13 @@ export const useGameStore = defineStore("game", {
     },
     Restart() {
       window.location.reload();
+    },
+    ChangeGameSpeed(Sankelenght) {
+      console.log("length:", Sankelenght, "speed:", this.speed);
+      if (Sankelenght >= 5) this.speed = 150;
+      if (Sankelenght >= 10) this.speed = 200;
+      if (Sankelenght >= 15) this.speed = 250;
+      if (Sankelenght >= 20) this.speed = 300;
     },
     StartSnakeTimer() {
       if (this.snakeTimer) clearInterval(this.snakeTimer);
@@ -82,7 +89,6 @@ export const useGameStore = defineStore("game", {
       this.updateDirection(direction);
     },
     async showConfetti(box) {
-      console.log(box);
       if (!this.confettiCanvas) {
         let gb = document.querySelector("#game-board");
         if (!gb) return;

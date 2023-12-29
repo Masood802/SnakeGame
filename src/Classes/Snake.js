@@ -48,6 +48,7 @@ export class Snake {
     let newBox = new Box();
     newBox.color = game.Fooditem.color;
     this.boxes.splice(1, 0, newBox);
+    game.ChangeGameSpeed(this.boxes.length);
     this.CheckConsectiveBoxes();
     newBox.follow(this.head);
     for (let i = 2; i < this.boxes.length; i++) {
@@ -87,6 +88,7 @@ export class Snake {
       const game = useGameStore();
       game.showConfetti(this.boxes[2]);
       this.boxes.splice(1, 3);
+      game.ChangeGameSpeed(this.boxes.length);
       game.score += 100;
       game.CheckHighScore();
       SoundHelper.play("pop");
