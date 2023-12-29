@@ -16,3 +16,12 @@ body {
   font-family: "Alien Encounters Solid", serif;
   font-weight: bold;
 }
+.zoom-enter-active,
+.zoom-leave-active {
+  transition: all 200ms linear;
+}
+
+.zoom-enter-from,
+.zoom-leave-to {
+  scale: 0;
+}

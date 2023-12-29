@@ -1,10 +1,12 @@
 <template>
-  <img
-    :src="`/pix/${game.Fooditem.color}Mush.png`"
-    alt=""
-    class="absolute"
-    :style="Newstyles"
-  />
+  <Transition name="zoom">
+    <img
+      :src="`/pix/${game.Fooditem.color}Mush.png`"
+      alt=""
+      class="absolute"
+      :style="Newstyles"
+    />
+  </Transition>
 </template>
 
 <script setup>

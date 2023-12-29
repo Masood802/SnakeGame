@@ -1,5 +1,6 @@
 import { defineStore } from "pinia";
 import { FoodItem } from "@/Classes/FoodItem";
+import { SoundHelper } from "@/Helpers/SoundHelper";
 
 export const useGameStore = defineStore("game", {
   state: () => ({
@@ -14,15 +15,18 @@ export const useGameStore = defineStore("game", {
     foodTimer: null,
     confettiCanvas: null,
     score: 0,
-    higScore: 0,
+    highScore: 0,
   }),
   getters: {
     BoxSize() {
       return this.gridSize / this.totalBoxes;
     },
   },
-
   actions: {
+    CheckHighScore() {
+      if (this.score > this.highScore) this.highScore = this.score;
+      localStorage.setItem("HighScore", this.highScore);
+    },
     Restart() {
       window.location.reload();
     },

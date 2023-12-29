@@ -1,21 +1,25 @@
 <template>
   <main
-    class="flex items-center justify-center h-screen w-screen bg-[#364532]"
+    class="flex items-center justify-center h-screen w-screen bg-[#364532] overflow-hidden"
     @click.stop="() => {}"
   >
-    
     <div
       id="game-board"
       class="bg-gray-300 relative rounded-md bg-[url('./pix/bkg.jpg')] bg-cover bg-center"
       :style="{ width: game.gridSize + 'px', height: game.gridSize + 'px' }"
       @click.stop="game.paused = true"
     >
-      <BoxComponet v-for="box in game.snake.boxes" :box="box"></BoxComponet>
+      <TransitionGroup name="zoom">
+        <BoxComponet v-for="box in game.snake.boxes" :box="box"></BoxComponet>
+      </TransitionGroup>
       <FoodItemComponent></FoodItemComponent>
       <Buttons></Buttons>
-      <div class="fixed top-10 right-20">
-      <h1 class="text-white text-3xl text-left">Score:{{ game.score }}</h1>
-    </div>
+      <div class="fixed top-10 right-20 flex flex-col">
+        <h1 class="text-white text-3xl text-left">
+          HighScore:{{ game.highScore }}
+        </h1>
+        <h1 class="text-white text-3xl text-left">Score:{{ game.score }}</h1>
+      </div>
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>
     </div>
@@ -39,9 +43,16 @@ onBeforeMount(() => {
 });
 onMounted(() => {
   SoundHelper.loadSounds();
+  // SoundHelper.play("startgame");
   game.StartSnakeTimer();
   game.StartFoodTimer();
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());
+  let data = localStorage.getItem("HighScore");
+  if (data) {
+    try {
+      game.highScore = data;
+    } catch (e) {}
+  }
 });
 </script>

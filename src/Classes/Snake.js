@@ -1,6 +1,5 @@
 import { useGameStore } from "@/stores/gamestore.js";
 import { Box } from "./Box.js";
-import { FoodItem } from "./FoodItem.js";
 import { SoundHelper } from "@/Helpers/SoundHelper.js";
 export class Snake {
   boxes = [];
@@ -8,10 +7,10 @@ export class Snake {
   constructor() {
     const game = useGameStore();
     const center = Math.floor(game.totalBoxes / 2);
-    this.boxes.push(new Box(center, center, "red"));
-    this.boxes.push(new Box(center, center - 1, "green"));
-    this.boxes.push(new Box(center, center - 2, "green"));
-    this.boxes.push(new Box(center, center - 3, "red"));
+    this.boxes.push(new Box(center, center));
+    this.boxes.push(new Box(center, center - 1, "red"));
+    this.boxes.push(new Box(center, center - 2, "blue"));
+    this.boxes.push(new Box(center, center - 3, "yellow"));
   }
   get head() {
     return this.boxes[0];
@@ -32,6 +31,7 @@ export class Snake {
     let head = this.head;
     if (this.Checkboundaryclash) {
       game.gameover = true;
+      SoundHelper.play("gameover");
       return;
     }
     head.move(this.direction);
@@ -55,6 +55,7 @@ export class Snake {
       box.Gotolastpositon();
     }
     game.score += 50;
+    game.CheckHighScore();
     game.CreateFoodItem();
     game.StartFoodTimer();
     SoundHelper.play("Crunch");
@@ -65,8 +66,10 @@ export class Snake {
       if (
         this.head.row === this.boxes[i].row &&
         this.head.col === this.boxes[i].col
-      )
+      ) {
         game.gameover = true;
+        SoundHelper.play("gameover");
+      }
     }
   }
   updatePosition() {
@@ -85,6 +88,7 @@ export class Snake {
       game.showConfetti(this.boxes[2]);
       this.boxes.splice(1, 3);
       game.score += 100;
+      game.CheckHighScore();
       SoundHelper.play("pop");
     }
   }
