@@ -9,9 +9,9 @@
       :style="{ width: game.gridSize + 'px', height: game.gridSize + 'px' }"
       @click.stop="game.paused = true"
     >
-      <TransitionGroup name="zoom">
-        <BoxComponet v-for="box in game.snake.boxes" :box="box"></BoxComponet>
-      </TransitionGroup>
+      <transition-group name="zoom">
+        <BoxComponet v-for="box in game.snake.boxes" :box="box" :key="box"></BoxComponet>
+      </transition-group>
       <FoodItemComponent></FoodItemComponent>
       <Buttons></Buttons>
       <div class="fixed top-10 right-20 flex flex-col">
