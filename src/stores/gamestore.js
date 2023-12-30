@@ -7,6 +7,7 @@ export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
+    baseSpeed:80,
     snake: null,
     gameover: false,
     paused: false,
@@ -25,7 +26,7 @@ export const useGameStore = defineStore("game", {
       return this.gridSize / this.totalBoxes;
     },
     speed() {
-      return Math.min(80 + this.snake.boxes.length * 20, 400);
+      return Math.min(this.baseSpeed + this.snake.boxes.length * 20, 400);
     },
   },
   actions: {
