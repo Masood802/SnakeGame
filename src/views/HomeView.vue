@@ -2,7 +2,7 @@
 
 <template>
   <main
-    class="bg-[url(./pix/peakpx.jpg)] flex-col bg-cover all-center flex h-screen w-screen relative"
+    class="bg-[url(/pix/peakpx.jpg)] flex-col bg-cover all-center flex h-screen w-screen relative"
   >
     <img src="/pix/title.png" alt="" class="absolute top-8" />
     <RouterLink
