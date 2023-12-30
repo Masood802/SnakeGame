@@ -27,7 +27,7 @@ const styles = computed(() => {
     top: p.box.row * game.BoxSize + "px",
     width: game.BoxSize + "px",
     height: game.BoxSize + "px",
-    transitionDuration: game.speed + "ms",
+    transitionDuration: game.baseSpeed + "ms",
     transform: `rotate(${rotation}deg)`,
   };
 });

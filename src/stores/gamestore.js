@@ -48,7 +48,7 @@ export const useGameStore = defineStore("game", {
       this.snakeTimer = setInterval(() => {
         if (this.paused || this.gameover) return;
         this.snake.move();
-      }, this.speed);
+      }, this.baseSpeedspeed);
     },
     StartFoodTimer() {
       if (this.foodTimer) clearInterval(this.foodTimer);
