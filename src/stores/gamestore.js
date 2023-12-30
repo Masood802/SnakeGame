@@ -7,7 +7,6 @@ export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
-    speed: 150, // in ms
     snake: null,
     gameover: false,
     paused: false,
@@ -25,6 +24,9 @@ export const useGameStore = defineStore("game", {
     BoxSize() {
       return this.gridSize / this.totalBoxes;
     },
+    speed() {
+      return Math.min(80 + this.snake.boxes.length * 20, 400);
+    },
   },
   actions: {
     PlayGame() {
@@ -39,12 +41,6 @@ export const useGameStore = defineStore("game", {
     },
     Restart() {
       window.location.reload();
-    },
-    ChangeGameSpeed(Sankelenght) {
-      if (Sankelenght >= 5) this.speed = 175;
-      if (Sankelenght >= 10) this.speed = 200;
-      if (Sankelenght >= 15) this.speed = 225;
-      if (Sankelenght >= 20) this.speed = 250;
     },
     StartSnakeTimer() {
       if (this.snakeTimer) clearInterval(this.snakeTimer);
@@ -68,6 +64,11 @@ export const useGameStore = defineStore("game", {
       }, 8000);
     },
     CreateSpecialItem() {
+      if (Math.random() < 0.7) {
+        this.specialItem = null;
+        return;
+      }
+
       let row = Math.floor(Math.random() * this.totalBoxes);
       let col = Math.floor(Math.random() * this.totalBoxes);
       this.specialItem = new SpecialItem(row, col);

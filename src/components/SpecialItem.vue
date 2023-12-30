@@ -1,4 +1,8 @@
 <template>
+  <div
+    :style="Newstyle"
+    class="absolute animate-ping bg-yellow-100 rounded-full"
+  ></div>
   <transition name="zoom">
     <img
       :src="`/pix/${game.specialItem.item}.png`"

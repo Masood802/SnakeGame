@@ -6,7 +6,7 @@ export const SoundHelper = {
   gameover: null,
   startgame: null,
   loadSounds() {
-    this.click = new Audio(`/sounds/click.wav`);
+    this.click = new Audio(`/sounds/spsound.mp3`);
     this.Crunch = new Audio(`/sounds/Crunch.mp3`);
     this.pop = new Audio(`/sounds/pop.mp3`);
     this.hit = new Audio(`/sounds/hit.wav`);
@@ -16,5 +16,10 @@ export const SoundHelper = {
   play(sound) {
     this[sound].currentTime = 0;
     this[sound].play();
+  },
+  PlaybgMusic(sound) {
+    this[sound].play();
+    this[sound].volume = 0.2;
+    this[sound].loop = true;
   },
 };

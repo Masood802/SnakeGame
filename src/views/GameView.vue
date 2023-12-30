@@ -6,7 +6,7 @@
     <div
       v-if="game.startGame === true"
       id="game-board"
-      class="bg-gray-300 relative rounded-md bg-[url('./pix/bkg.jpg')] bg-cover bg-center"
+      class="bg-gray-300 relative rounded-md bg-[url('/pix/bkg.jpg')] bg-cover bg-center"
       :style="{ width: game.gridSize + 'px', height: game.gridSize + 'px' }"
       @click.stop="game.paused = true"
     >
@@ -18,6 +18,7 @@
         ></BoxComponet>
       </transition-group>
       <FoodItemComponent></FoodItemComponent>
+      <SpecialItem v-if="game.specialItem"></SpecialItem>
       <Buttons></Buttons>
       <div class="fixed top-10 right-20 flex flex-col">
         <h1 class="text-white text-3xl text-left">
@@ -27,11 +28,10 @@
       </div>
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>
-      <SpecialItem></SpecialItem>
     </div>
     <div
       v-if="game.startGame === false"
-      class="bg-[url(./pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
+      class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
       @click="game.PlayGame"
     ></div>
   </main>
@@ -55,7 +55,7 @@ onBeforeMount(() => {
 });
 onMounted(() => {
   SoundHelper.loadSounds();
-  // SoundHelper.play("startgame");
+  SoundHelper.PlaybgMusic("startgame");
 
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());

@@ -9,11 +9,14 @@ export class Snake {
     const center = Math.floor(game.totalBoxes / 2);
     this.boxes.push(new Box(center, center));
     this.boxes.push(new Box(center, center - 1, "red"));
-    this.boxes.push(new Box(center, center - 2, "blue"));
-    this.boxes.push(new Box(center, center - 3, "yellow"));
+    this.boxes.push(new Box(center, center - 2, "yellow"));
+    this.boxes.push(new Box(center, center - 3, "blue"));
   }
   get head() {
     return this.boxes[0];
+  }
+  get tail() {
+    return this.boxes.length - 1;
   }
   get Checkboundaryclash() {
     const game = useGameStore();
@@ -48,17 +51,24 @@ export class Snake {
   isSpecialItemeaton() {
     let game = useGameStore();
     if (
-      this.head.row === game.specialItem.row &&
-      this.head.col === game.specialItem.col
+      this.head.row === game.specialItem?.row &&
+      this.head.col === game.specialItem?.col
     ) {
-      switch (game.specialItem.item) {
+      SoundHelper.play("click");
+      switch (game.specialItem?.item) {
         case "cheeta":
           game.speed -= 25;
           console.log("speedIncreased", game.speed);
           break;
         case "increase":
           this.boxes.push(new Box());
-          console.log("box added");
+          this.ChecktailConsectiveBoxes();
+          console.log(
+            "box added",
+            this.boxes[this.tail].color,
+            this.boxes[this.tail - 1].color,
+            this.boxes[this.tail - 2].color
+          );
           break;
         case "decrease":
           this.boxes.pop();
@@ -81,8 +91,7 @@ export class Snake {
     let newBox = new Box();
     newBox.color = game.Fooditem.color;
     this.boxes.splice(1, 0, newBox);
-    game.ChangeGameSpeed(this.boxes.length);
-    this.CheckConsectiveBoxes();
+    this.CheckConsectiveBoxes(1, 2, 3);
     newBox.follow(this.head);
     for (let i = 2; i < this.boxes.length; i++) {
       let box = this.boxes[i];
@@ -113,15 +122,27 @@ export class Snake {
       box.follow(previous);
     }
   }
-  CheckConsectiveBoxes() {
+  CheckConsectiveBoxes(a, b, c) {
     if (
       this.boxes[1].color === this.boxes[2].color &&
       this.boxes[2].color === this.boxes[3].color
     ) {
       const game = useGameStore();
-      game.showConfetti(this.boxes[2]);
+      game.showConfetti(this.boxes[b]);
       this.boxes.splice(1, 3);
-      game.ChangeGameSpeed(this.boxes.length);
+      game.score += 100;
+      game.CheckHighScore();
+      SoundHelper.play("pop");
+    }
+  }
+  ChecktailConsectiveBoxes() {
+    if (
+      this.boxes[this.tail].color === this.boxes[this.tail - 1].color &&
+      this.boxes[this.tail - 1].color === this.boxes[this.tail - 2].color
+    ) {
+      const game = useGameStore();
+      game.showConfetti(this.boxes[this.tail - 2]);
+      this.boxes.splice(this.tail - 2, 3);
       game.score += 100;
       game.CheckHighScore();
       SoundHelper.play("pop");
