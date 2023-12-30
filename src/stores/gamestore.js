@@ -7,7 +7,7 @@ export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
-    baseSpeed:80,
+    baseSpeed: 80,
     snake: null,
     gameover: false,
     paused: false,
@@ -48,7 +48,7 @@ export const useGameStore = defineStore("game", {
       this.snakeTimer = setInterval(() => {
         if (this.paused || this.gameover) return;
         this.snake.move();
-      }, this.baseSpeedspeed);
+      }, this.baseSpeed);
     },
     StartFoodTimer() {
       if (this.foodTimer) clearInterval(this.foodTimer);
