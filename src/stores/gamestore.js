@@ -7,7 +7,7 @@ export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
-    baseSpeed: 80,
+    baseSpeed: 100,
     snake: null,
     gameover: false,
     paused: false,
