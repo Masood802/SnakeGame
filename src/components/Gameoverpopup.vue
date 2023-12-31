@@ -8,11 +8,12 @@
     >
       Restart
     </button>
-    <router-link to="/"><button
-      @click.stop="game.GameEnd"
-      class="text-lg font-bold  rounded-full w-24 h-24  text-slate-50 bg-[url('./pix/quit.png')] bg-cover bg-center"
-    >
-    </button></router-link>
+    <router-link to="/"
+      ><button
+        @click.stop="game.GameEnd"
+        class="text-lg font-bold rounded-full w-24 h-24 text-slate-50 bg-[url('/pix/quit.png')] bg-cover bg-center"
+      ></button
+    ></router-link>
   </ThePopup>
 </template>
 
