@@ -55,7 +55,7 @@ onBeforeMount(() => {
 });
 onMounted(() => {
   SoundHelper.loadSounds();
-  SoundHelper.PlaybgMusic("startgame");
+
 
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());

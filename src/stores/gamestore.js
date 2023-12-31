@@ -35,6 +35,7 @@ export const useGameStore = defineStore("game", {
       this.StartSnakeTimer();
       this.StartFoodTimer();
       this.StartSpecialItemTimer();
+      SoundHelper.PlaybgMusic("startgame");
     },
     CheckHighScore() {
       if (this.score > this.highScore) this.highScore = this.score;
