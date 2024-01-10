@@ -57,6 +57,7 @@ onBeforeMount(() => {
 });
 onMounted(() => {
   SoundHelper.loadSounds();
+  console.log(game.baseSpeed)
 
 
   document.addEventListener("keydown", game.HandleKeyboadEvents);

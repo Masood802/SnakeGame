@@ -6,6 +6,6 @@ export const useSettingStore = defineStore("setting", {
     gameSound: 0.1,
     gameEffects: 0.8,
     zenmode: false,
-    gameDifficulty:null
+    gameDifficulty:'easy'
   }),
 });

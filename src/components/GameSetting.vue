@@ -1,30 +1,34 @@
 <template>
-    <div class=" w-screen h-screen bg-[url('/pix/bkg.jpg')] bg-cover bg-center text-center">
+    <div class=" w-screen h-screen bg-[url('/pix/bkg.jpg')] bg-cover bg-center text-center ">
         <h1 class="text-center text-3xl py-8 text-white ">Game Settings</h1>
         <div class="w-1/2 mx-auto flex justify-center items-center">
-            <label for="GameVol" class="mx-2 w-1/4 text-white">Game Sound</label>
+            <label for="GameVol" class="mx-2 w-1/4 text-white text-left">Game Sound</label>
             <input type="range" name="GameVol" id="Gamevol" min="0" max="1" class="w-3/4 text-orange-700 bg-red-700 " step=".1"  v-model="setting.gameSound">
             <p class="text-white mx-2">{{setting.gameSound }}</p>
         </div>
         <div class="w-1/2 mx-auto flex justify-center items-center my-4">
-            <label for="effectVol" class="mx-2 w-1/4 text-white">Game Effects</label>
-            <span class="text-3xl text-center py-2 mr-1">-</span>
+            <label for="effectVol" class="mx-2 w-1/4 text-white text-left">Game Effects</label>
             <input type="range" name="effectVol" id="effectVol" min="0" max="1" class="w-3/4 text-orange-700 bg-red-700 " step=".1"  v-model="setting.gameEffects">
-           <span>+</span>
             <p class="text-white mx-2">{{ setting.gameEffects }}</p>  
         </div>
-        <div class="w-1/2 mx-auto flex justify-center items-center my-4">
-            <label for="gamediff">Game Difficulty</label>
-            
-            
-
+        <div class="w-1/2 mx-auto flex justify-center items-center my-4 text-white">
+            <label for="gamediff" class="text-left w-2/3 ml-2">Game Difficulty</label>
+            <div class="w-2/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="easy" id="easy" checked v-model="setting.gameDifficulty">
+            <label for="easy" class="ml-2">easy</label></div>
+            <div class="w-2/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="medium" id="Medium" v-model="setting.gameDifficulty">
+            <label for="Medium" class="ml-2">Medium</label></div>
+            <div class="w-1/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="hard" id="Hard" v-model="setting.gameDifficulty">
+            <label for="Hard" class="ml-2">Hard</label></div>
         </div>
+         <RouterLink
+      to="/game-view"
+      class=" rounded-md text-2xl text-green-400 w-52 h-12 font-bold bg-orange-600 text-center py-2"
+    >Play Game</RouterLink>
     </div>
     
 </template>
 <script setup>
 import {useSettingStore} from '@/stores/SettingStore'
-import { ref } from 'vue';
 let setting = useSettingStore();
 
 

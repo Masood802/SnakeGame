@@ -2,13 +2,15 @@ import { defineStore } from "pinia";
 import { FoodItem } from "@/Classes/FoodItem";
 import { SoundHelper } from "@/Helpers/SoundHelper";
 import { SpecialItem } from "@/Classes/SpecialItem";
-import {useRouter} from "vue-router";
+import { useRouter } from "vue-router";
+import { useSettingStore } from "./SettingStore";
+let setting = useSettingStore();
+let router = useRouter();
 
 export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
-    baseSpeed: 120,
     snake: null,
     gameover: false,
     paused: false,
@@ -29,6 +31,11 @@ export const useGameStore = defineStore("game", {
     speed() {
       return Math.min(this.baseSpeed + this.snake.boxes.length * 20, 400);
     },
+    baseSpeed() {
+      if (setting.gameDifficulty === 'easy') return 150
+      if (setting.gameDifficulty === 'medium') return 130
+      if(setting.gameDifficulty==='hard')return 110
+    }
   },
   actions: {
     PlayGame() {
@@ -87,7 +94,7 @@ export const useGameStore = defineStore("game", {
     GameEnd() {
       this.gameover = true;
       SoundHelper.stopMusic("startgame");
-      let router=useRouter()
+      
       router.push('/');
 
     },
