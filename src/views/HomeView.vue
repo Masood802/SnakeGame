@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import { useSettingStore } from "@/stores/SettingStore";
+
+let setting = useSettingStore();
+</script>
 
 <template>
   <main
@@ -7,7 +11,17 @@
     <img src="/pix/title.png" alt="" class="absolute top-8" />
     <RouterLink
       to="/game-view"
-      class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full text-3xl text-green-600 w-24 h-24 font-bold"
-    ></RouterLink>
+      class=" shadow rounded-md text-2xl text-green-400 w-52 h-12 font-bold bg-orange-600 text-center py-2"
+    >Play Game</RouterLink>
+    <RouterLink
+      to="/game-view"
+      @click="setting.zenmode=true"
+      class=" shadow rounded-md text-2xl text-green-400 w-52 h-12 font-bold bg-orange-600 text-center py-2 my-2"
+    >Zen Mode</RouterLink>
+    <RouterLink
+      to="/game-settings"
+      class=" shadow rounded-md text-2xl text-green-400 w-52 h-12 font-bold bg-orange-600 text-center py-2"
+    >Game Settings</RouterLink>
+      
   </main>
 </template>

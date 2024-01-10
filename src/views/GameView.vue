@@ -19,6 +19,7 @@
       </transition-group>
       <FoodItemComponent></FoodItemComponent>
       <SpecialItem v-if="game.specialItem"></SpecialItem>
+     
       <Buttons></Buttons>
       <div class="fixed top-10 right-20 flex flex-col">
         <h1 class="text-white text-3xl text-left">
@@ -34,6 +35,7 @@
       class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
       @click="game.PlayGame"
     ></div>
+   
   </main>
 </template>
 <script setup>
