@@ -1,6 +1,7 @@
 import { useGameStore } from "@/stores/gamestore.js";
 import { Box } from "./Box.js";
 import { SoundHelper } from "@/Helpers/SoundHelper.js";
+import { useSettingStore } from "@/stores/SettingStore.js";
 export class Snake {
   boxes = [];
   direction = "R";
@@ -20,7 +21,12 @@ export class Snake {
   }
   get Checkboundaryclash() {
     const game = useGameStore();
+    let setting = useSettingStore();
     let firstBox = this.boxes[0];
+    // if (setting.zenmode === true) {
+    //   this.zenmodeplay();
+    //   return;
+    // }
     return (
       (firstBox.col === game.totalBoxes - 1 && game.snake.direction === "R") ||
       (firstBox.col === 0 && game.snake.direction === "L") ||
@@ -121,6 +127,11 @@ export class Snake {
       let box = this.boxes[i];
       let previous = this.boxes[i - 1];
       box.follow(previous);
+    }
+  }
+  zenmodeplay() {
+    if (this.head.col === game.totalBoxes) {
+      this.head.col = 0;
     }
   }
   CheckConsectiveBoxes(a, b, c) {

@@ -11,8 +11,13 @@
             <span class="text-3xl text-center py-2 mr-1">-</span>
             <input type="range" name="effectVol" id="effectVol" min="0" max="1" class="w-3/4 text-orange-700 bg-red-700 " step=".1"  v-model="setting.gameEffects">
            <span>+</span>
-            <p class="text-white mx-2">{{ setting.gameEffects }}</p>
+            <p class="text-white mx-2">{{ setting.gameEffects }}</p>  
+        </div>
+        <div class="w-1/2 mx-auto flex justify-center items-center my-4">
+            <label for="gamediff">Game Difficulty</label>
             
+            
+
         </div>
     </div>
     
