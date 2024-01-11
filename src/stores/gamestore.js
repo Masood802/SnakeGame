@@ -2,6 +2,7 @@ import { defineStore } from "pinia";
 import { FoodItem } from "@/Classes/FoodItem";
 import { SoundHelper } from "@/Helpers/SoundHelper";
 import { SpecialItem } from "@/Classes/SpecialItem";
+import {useRouter} from "vue-router";
 
 export const useGameStore = defineStore("game", {
   state: () => ({
@@ -85,7 +86,10 @@ export const useGameStore = defineStore("game", {
     // },
     GameEnd() {
       this.gameover = true;
-      window.location.reload();
+      SoundHelper.stopMusic("startgame");
+      let router=useRouter()
+      router.push('/');
+
     },
     updateDirection(direction) {
       if (this.snake.direction === "U" && direction === "D") return;
