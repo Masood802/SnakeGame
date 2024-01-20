@@ -38,6 +38,21 @@
       class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
       @click="game.PlayGame"
     ></div>
+     <div
+      v-if="game.startGame === false"
+      class="bg-[url(/pix/settings.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
+      @click="game.PlayGame"
+    ></div>
+     <div
+      v-if="game.startGame === false"
+      class="bg-[url(/pix/hallOfFame.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
+      @click="game.PlayGame"
+    ></div>
+     <div
+      v-if="game.startGame === false"
+      class="bg-[url(/pix/quit.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
+      @click="game.PlayGame"
+    ></div>
    
   </main>
 </template>
