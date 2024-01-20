@@ -35,9 +35,12 @@
     </div>
     <div
       v-if="game.startGame === false"
-      class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
+      class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group"
       @click="game.PlayGame"
-    ></div>
+    >
+  <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300">Play Game</p>
+  </div>
+    
      <div
       v-if="game.startGame === false"
       class="bg-[url(/pix/settings.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
