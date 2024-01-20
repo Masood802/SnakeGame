@@ -13,11 +13,11 @@
         </div>
         <div class="w-1/2 mx-auto flex justify-center items-center my-4 text-white">
             <label for="gamediff" class="text-left w-2/3 ml-2">Game Difficulty</label>
-            <div class="w-2/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="easy" id="easy" checked v-model="setting.gameDifficulty">
+            <div class="w-2/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="easy" id="easy" checked v-model="setting.gameDifficulty" @change="game.changeSpeed">
             <label for="easy" class="ml-2">easy</label></div>
-            <div class="w-2/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="medium" id="Medium" v-model="setting.gameDifficulty">
+            <div class="w-2/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="medium" id="Medium" v-model="setting.gameDifficulty" @change="game.changeSpeed">
             <label for="Medium" class="ml-2">Medium</label></div>
-            <div class="w-1/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="hard" id="Hard" v-model="setting.gameDifficulty">
+            <div class="w-1/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="hard" id="Hard" v-model="setting.gameDifficulty" @change="game.changeSpeed">
             <label for="Hard" class="ml-2">Hard</label></div>
         </div>
          <RouterLink

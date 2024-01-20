@@ -21,11 +21,14 @@
       <SpecialItem v-if="game.specialItem"></SpecialItem>
      
       <Buttons></Buttons>
-      <div class="fixed top-10 right-20 flex flex-col">
-        <h1 class="text-white text-3xl text-left">
+      <div class="fixed top-4 right-2 flex flex-col">
+        <h1 class="text-white text-2xl text-left">
           HighScore:{{ game.highScore }}
         </h1>
-        <h1 class="text-white text-3xl text-left">Score:{{ game.score }}</h1>
+        <h1 class="text-white text-2xl text-left">Score:{{ game.score }}</h1>
+      </div>
+      <div class="fixed top-0 left-2 text-white">
+        <h1>{{ game.speed }}</h1>
       </div>
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>

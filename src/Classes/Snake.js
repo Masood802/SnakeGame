@@ -63,7 +63,7 @@ export class Snake {
       SoundHelper.play("click");
       switch (game.specialItem?.item) {
         case "cheeta":
-          game.baseSpeed -= 20;
+          game.baseSpeed =game.baseSpeed-20;
           console.log("speedIncreased", game.speed);
           break;
         case "increase":
@@ -77,7 +77,7 @@ export class Snake {
           );
           break;
         case "decrease":
-          if (this.boxes.length === 3) return;
+          if (this.boxes.length === 4) return;
           this.boxes.pop();
           console.log("box poped");
           break;

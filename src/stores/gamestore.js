@@ -11,6 +11,7 @@ export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
+    baseSpeed:120,
     snake: null,
     gameover: false,
     paused: false,
@@ -29,13 +30,9 @@ export const useGameStore = defineStore("game", {
       return this.gridSize / this.totalBoxes;
     },
     speed() {
-      return Math.min(this.baseSpeed + this.snake.boxes.length * 20, 400);
+      return Math.min(this.baseSpeed + this.snake.boxes.length * 10, 400);
     },
-    baseSpeed() {
-      if (setting.gameDifficulty === 'easy') return 150
-      if (setting.gameDifficulty === 'medium') return 130
-      if(setting.gameDifficulty==='hard')return 110
-    }
+    
   },
   actions: {
     PlayGame() {
@@ -51,6 +48,12 @@ export const useGameStore = defineStore("game", {
     },
     Restart() {
       window.location.reload();
+    },
+    changeSpeed() {
+      if (setting.gameDifficulty === 'easy') this.baseSpeed= 120
+      if (setting.gameDifficulty === 'medium') this.baseSpeed=  100
+      if (setting.gameDifficulty === 'hard') this.baseSpeed = 80
+      console.log(this.baseSpeed)
     },
     StartSnakeTimer() {
       if (this.snakeTimer) clearInterval(this.snakeTimer);
