@@ -1,5 +1,6 @@
 <template>
-    <div class=" w-screen h-screen bg-[url('/pix/bkg.jpg')] bg-cover bg-center text-center ">
+    <the-popup>
+    <div class="w- auto bg-[url('/pix/bkg.jpg')] bg-cover bg-center text-center ">
         <h1 class="text-center text-3xl py-8 text-white ">Game Settings</h1>
         <div class="w-1/2 mx-auto flex justify-center items-center">
             <label for="GameVol" class="mx-2 w-1/4 text-white text-left">Game Sound</label>
@@ -20,15 +21,13 @@
             <div class="w-1/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="hard" id="Hard" v-model="setting.gameDifficulty" @change="game.changeSpeed">
             <label for="Hard" class="ml-2">Hard</label></div>
         </div>
-         <RouterLink
-      to="/game-view"
-      class=" rounded-md text-2xl text-green-400 w-52 h-12 font-bold bg-orange-600 text-center py-2"
-    >Play Game</RouterLink>
+        
     </div>
-    
+    </the-popup>
 </template>
 <script setup>
-import {useSettingStore} from '@/stores/SettingStore'
+import { useSettingStore } from '@/stores/SettingStore'
+import ThePopup from './ThePopup.vue';
 let setting = useSettingStore();
 
 

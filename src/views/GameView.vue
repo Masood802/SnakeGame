@@ -41,7 +41,7 @@
      <div
       v-if="game.startGame === false"
       class="bg-[url(/pix/settings.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
-      @click="game.PlayGame"
+      @click="showsettings"
     ></div>
      <div
       v-if="game.startGame === false"
@@ -67,7 +67,11 @@ import Buttons from "@/components/Buttons.vue";
 import Gameoverpopup from "@/components/Gameoverpopup.vue";
 import Gamepausepopup from "@/components/Gamepausepopup.vue";
 import { SoundHelper } from "@/Helpers/SoundHelper";
+import { useSettingStore } from "@/stores/SettingStore.js";
+import { useRouter } from "vue-router";
 let game = useGameStore();
+let setting = useSettingStore();
+let router=useRouter()
 onBeforeMount(() => {
   game.snake = new Snake();
   game.CreateFoodItem();
@@ -76,8 +80,6 @@ onBeforeMount(() => {
 onMounted(() => {
   SoundHelper.loadSounds();
   console.log(game.baseSpeed)
-
-
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());
   let data = localStorage.getItem("HighScore");
@@ -87,4 +89,8 @@ onMounted(() => {
     } catch (e) {}
   }
 });
+function showsettings() {
+  setting.togglesetting = true
+  router.push('game-settings')
+}
 </script>
