@@ -1,5 +1,5 @@
 import { useSettingStore } from "@/stores/SettingStore";
-let setting = useSettingStore();
+
 export const SoundHelper = {
   click: null,
   hit: null,
@@ -17,11 +17,13 @@ export const SoundHelper = {
     this.startgame = new Audio(`/sounds/startgame.mp3`);
   },
   play(sound) {
+let setting = useSettingStore();
     this[sound].currentTime = 0;
     this[sound].volume = setting.gameEffects;
     this[sound].play();
   },
   PlaybgMusic(sound) {
+    let setting = useSettingStore();
     this[sound].play();
     this[sound].volume = setting.gameSound;
     this[sound].loop = true;

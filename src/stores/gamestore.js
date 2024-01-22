@@ -4,8 +4,8 @@ import { SoundHelper } from "@/Helpers/SoundHelper";
 import { SpecialItem } from "@/Classes/SpecialItem";
 import { useRouter } from "vue-router";
 import { useSettingStore } from "./SettingStore";
-let setting = useSettingStore();
-let router = useRouter();
+
+
 
 export const useGameStore = defineStore("game", {
   state: () => ({
@@ -50,6 +50,7 @@ export const useGameStore = defineStore("game", {
       window.location.reload();
     },
     changeSpeed() {
+      let setting = useSettingStore();
       if (setting.gameDifficulty === 'easy') this.baseSpeed= 120
       if (setting.gameDifficulty === 'medium') this.baseSpeed=  100
       if (setting.gameDifficulty === 'hard') this.baseSpeed = 80
@@ -95,6 +96,7 @@ export const useGameStore = defineStore("game", {
     //   let rand = Math.floor(Math.random() * (8000 - 5000 + 1) + 5000);
     // },
     GameEnd() {
+      let router = useRouter();
       this.gameover = true;
       SoundHelper.stopMusic("startgame");
       

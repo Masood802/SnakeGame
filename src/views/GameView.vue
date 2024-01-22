@@ -38,24 +38,10 @@
       class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group"
       @click="game.PlayGame"
     >
-  <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300">Play Game</p>
+  <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 left-1">Play Game</p>
   </div>
     
-     <div
-      v-if="game.startGame === false"
-      class="bg-[url(/pix/settings.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
-      @click="showsettings"
-    ></div>
-     <div
-      v-if="game.startGame === false"
-      class="bg-[url(/pix/hallOfFame.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
-      @click="game.PlayGame"
-    ></div>
-     <div
-      v-if="game.startGame === false"
-      class="bg-[url(/pix/quit.png)] bg-cover bg-center shadow rounded-full w-24 h-24"
-      @click="game.PlayGame"
-    ></div>
+     
    
   </main>
 </template>
@@ -92,8 +78,5 @@ onMounted(() => {
     } catch (e) {}
   }
 });
-function showsettings() {
-  setting.togglesetting = true
-  router.push('game-settings')
-}
+
 </script>

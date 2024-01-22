@@ -1,6 +1,6 @@
 <template>
     <the-popup>
-    <div class="w- auto bg-[url('/pix/bkg.jpg')] bg-cover bg-center text-center ">
+    <div class="w-[450px] bg-[url('/pix/bkg.jpg')] bg-cover bg-center text-center " >
         <h1 class="text-center text-3xl py-8 text-white ">Game Settings</h1>
         <div class="w-1/2 mx-auto flex justify-center items-center">
             <label for="GameVol" class="mx-2 w-1/4 text-white text-left">Game Sound</label>
@@ -21,14 +21,17 @@
             <div class="w-1/3 flex justify-start items-center"><input type="radio" name="gamedifficulty" value="hard" id="Hard" v-model="setting.gameDifficulty" @change="game.changeSpeed">
             <label for="Hard" class="ml-2">Hard</label></div>
         </div>
-        
+       <button @click="router.push('/')" class="bg-orange-600 w-32 h-12 my-4">OK</button>
     </div>
+    
     </the-popup>
 </template>
 <script setup>
 import { useSettingStore } from '@/stores/SettingStore'
+import { useRouter } from 'vue-router';
 import ThePopup from './ThePopup.vue';
 let setting = useSettingStore();
+let router = useRouter();
 
 
 </script>
