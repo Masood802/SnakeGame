@@ -10,7 +10,6 @@ let router = useRouter();
 function showsettings() {
   setting.togglesetting = true
   router.push('game-settings')
-  console.log(setting.togglesetting)
 }
 </script>
 

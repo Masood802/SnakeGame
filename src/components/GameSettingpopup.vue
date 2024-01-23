@@ -27,11 +27,12 @@
     </the-popup>
 </template>
 <script setup>
+import { useGameStore } from '@/stores/gamestore';
 import { useSettingStore } from '@/stores/SettingStore'
 import { useRouter } from 'vue-router';
 import ThePopup from './ThePopup.vue';
 let setting = useSettingStore();
 let router = useRouter();
-
+let game = useGameStore();
 
 </script>

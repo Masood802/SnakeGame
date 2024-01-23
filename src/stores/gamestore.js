@@ -36,6 +36,7 @@ export const useGameStore = defineStore("game", {
   },
   actions: {
     PlayGame() {
+      this.gameover=false
       this.startGame = true;
       this.StartSnakeTimer();
       this.StartFoodTimer();
@@ -47,7 +48,8 @@ export const useGameStore = defineStore("game", {
       localStorage.setItem("HighScore", this.highScore);
     },
     Restart() {
-      window.location.reload();
+      this.startGame = true;
+      window.location.reload()
     },
     changeSpeed() {
       let setting = useSettingStore();
@@ -92,14 +94,7 @@ export const useGameStore = defineStore("game", {
       let col = Math.floor(Math.random() * this.totalBoxes);
       this.Fooditem = new FoodItem(row, col);
     },
-    GameEnd() {
-      let router = useRouter();
-      this.gameover = true;
-      SoundHelper.stopMusic("startgame");
-      
-      router.push('/');
-
-    },
+    
     updateDirection(direction) {
       if (this.snake.direction === "U" && direction === "D") return;
       if (this.snake.direction === "D" && direction === "U") return;
