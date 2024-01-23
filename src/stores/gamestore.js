@@ -92,9 +92,6 @@ export const useGameStore = defineStore("game", {
       let col = Math.floor(Math.random() * this.totalBoxes);
       this.Fooditem = new FoodItem(row, col);
     },
-    // RondomNumber() {
-    //   let rand = Math.floor(Math.random() * (8000 - 5000 + 1) + 5000);
-    // },
     GameEnd() {
       let router = useRouter();
       this.gameover = true;
