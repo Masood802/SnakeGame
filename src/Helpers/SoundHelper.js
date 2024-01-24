@@ -20,12 +20,14 @@ export const SoundHelper = {
 let setting = useSettingStore();
     this[sound].currentTime = 0;
     this[sound].volume = setting.gameEffects;
+    localStorage.setItem("gamesoundvol",this[sound].volume)
     this[sound].play();
   },
   PlaybgMusic(sound) {
     let setting = useSettingStore();
     this[sound].play();
     this[sound].volume = setting.gameSound;
+    localStorage.setItem("bgvol",this[sound].volume)
     this[sound].loop = true;
   },
   stopMusic(sound) {

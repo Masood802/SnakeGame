@@ -25,7 +25,7 @@ import { SoundHelper } from "@/Helpers/SoundHelper";
 let game = useGameStore();
 let router =useRouter()
 function GameEnd() {
-      game.gameover = false
+  game.gameover = false;
       SoundHelper.stopMusic("startgame");
   console.log(game.gameover);
   router.push('/');
