@@ -104,7 +104,7 @@ export class Snake {
       let box = this.boxes[i];
       box.Gotolastpositon();
     }
-    game.score += 50;
+    game.score = game.score  + game.mushscore;
     game.CheckHighScore();
     game.CreateFoodItem();
     game.StartFoodTimer();

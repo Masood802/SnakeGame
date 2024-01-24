@@ -32,7 +32,12 @@ export const useGameStore = defineStore("game", {
     speed() {
       return Math.min(this.baseSpeed + this.snake.boxes.length * 10, 400);
     },
-    
+    mushscore() {
+      let setting=useSettingStore()
+      if (setting.gameDifficulty === 'easy') return 50
+      if (setting.gameDifficulty === 'medium') return 60
+      if (setting.gameDifficulty === 'hard') return 80
+    }
   },
   actions: {
     PlayGame() {
@@ -56,7 +61,9 @@ export const useGameStore = defineStore("game", {
       if (setting.gameDifficulty === 'easy') this.baseSpeed= 120
       if (setting.gameDifficulty === 'medium') this.baseSpeed=  100
       if (setting.gameDifficulty === 'hard') this.baseSpeed = 80
-      console.log(this.baseSpeed)
+      localStorage.setItem("speed", this.baseSpeed);
+      localStorage.setItem("diff", setting.gameDifficulty);
+     
     },
     StartSnakeTimer() {
       if (this.snakeTimer) clearInterval(this.snakeTimer);
