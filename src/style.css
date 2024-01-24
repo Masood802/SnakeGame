@@ -25,3 +25,10 @@ body {
 .zoom-leave-to {
   scale: 0;
 }
+.route-enter-from,.route-leave-to{
+ opacity: 0;
+
+}
+.route-enter-active,.route-leave-active{
+  transition: opacity 0.2s ease-out;
+}
