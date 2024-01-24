@@ -3,13 +3,19 @@
     class="flex items-center justify-center h-screen w-screen bg-[#364532] overflow-hidden"
     @click.stop="() => {}"
   >
+  
+
+
     <div
-      v-if="game.startGame === true"
       id="game-board"
       class="bg-gray-300 relative rounded-md bg-[url('/pix/bkg.jpg')] bg-cover bg-center"
       :style="{ width: game.gridSize + 'px', height: game.gridSize + 'px' }"
-      @click.stop="game.paused = true"
+      @click.stop="pauseGame"
     >
+    <div v-if="game.startGame === false"
+      class="bg-[url(/pix/play.png)] bg-cover bg-center rounded-full w-24 h-24 absolute top-[45%] left-[40%] z-50"  
+      @click.stop="game.PlayGame"></div>
+    
       <transition-group name="zoom">
         <BoxComponet
           v-for="box in game.snake.boxes"
@@ -33,20 +39,6 @@
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>
     </div>
-    <div
-      v-if="game.startGame === false"
-      class="bg-[url(/pix/play.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group" 
-      @click="game.PlayGame"
-    >
-  <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 left-1">Play Game</p>
-  </div>
-    <div
-      v-if="game.startGame === false"
-      class="bg-[url(/pix/quit.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group"
-      @click="router.push('/')"
-    >
-  <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 left-8">Quit</p>
-  </div>
  
   </main>
 </template>
@@ -82,6 +74,15 @@ onMounted(() => {
       game.highScore = data;
     } catch (e) {}
   }
+  let speed= localStorage.getItem("speed");
+  if (speed) {
+    try {
+      game.baseSpeed = speed;
+    }catch(e){}
+  }
 });
-
+function pauseGame() {
+  if (game.startGame === true)
+  game.paused=true
+}
 </script>
