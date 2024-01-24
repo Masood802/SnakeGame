@@ -11,7 +11,7 @@ export const useGameStore = defineStore("game", {
   state: () => ({
     gridSize: 750,
     totalBoxes: 25,
-    baseSpeed:120,
+    baseSpeed:0,
     snake: null,
     gameover: false,
     paused: false,
@@ -47,6 +47,8 @@ export const useGameStore = defineStore("game", {
       this.StartFoodTimer();
       this.StartSpecialItemTimer();
       SoundHelper.PlaybgMusic("startgame");
+      console.log('speed playgame', this.speed)
+      console.log('snake length',this.snake.boxes.length)
     },
     CheckHighScore() {
       if (this.score > this.highScore) this.highScore = this.score;

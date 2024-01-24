@@ -6,12 +6,16 @@
         >
      <p class="absolute top-20 opacity-0 group-hover:top-16 group-hover:opacity-100 transition-all duration-300 text-center left-3">
     Back</p></button>
-    <div class="container grid grid-rows-10 w-1/2 fixed top-32  ">
-        <div class="bg-red-200 flex" v-for="score in scores" :key="score.index">
-        <div class="px-2 w-full">{{score.id}}</div>
-        <div class="px-2 w-full">{{ score.name }}</div>
-        <div class="px-2 w-full">{{ score.score }}</div>
-        <div class="px-2 w-full">{{ score.date }}</div>
+    <div class="container grid grid-rows-11 w-1/2 fixed top-32  ">
+         <div class="flex  text-white " ><div class="heading" >S#</div>
+        <div class="heading">Name</div>
+        <div class="heading">Score</div>
+        <div class="heading">Date</div></div>
+        <div class="text-white  flex" v-for="score in scores" :key="score.index">
+        <div class="heading">{{score.id}}</div>
+        <div class="heading">{{ score.name }}</div>
+        <div class="heading">{{ score.score }}</div>
+        <div class="heading">{{ score.date }}</div>
         </div>
     </div>
     </div>

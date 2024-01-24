@@ -69,12 +69,15 @@ onMounted(() => {
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());
   let data = localStorage.getItem("HighScore");
+  data=JSON.parse(data)
   if (data) {
     try {
       game.highScore = data;
     } catch (e) {}
   }
-  let speed= localStorage.getItem("speed");
+  let speed = localStorage.getItem("speed");
+  speed=JSON.parse(speed)
+  console.log('speed',speed)
   if (speed) {
     try {
       game.baseSpeed = speed;

@@ -32,3 +32,8 @@ body {
 .route-enter-active,.route-leave-active{
   transition: opacity 0.2s ease-out;
 }
+.heading{
+  padding: 8px;
+  width: 100%;
+  border:1px solid white;
+}
