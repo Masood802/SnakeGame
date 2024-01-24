@@ -1,6 +1,7 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
-import GameSettingpopup from '../components/GameSettingpopup.vue' 
+import GameSettingpopup from '../components/GameSettingpopup.vue'
+import HallofFame from '../components/HallofFame.vue' 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -22,6 +23,12 @@ const router = createRouter({
       name: "GameSetting",
       component:GameSettingpopup
     },
+    {
+      path: '/hall-of-fame',
+      name: "HallofFame",
+      component:HallofFame
+      
+    }
   ],
 });
 
