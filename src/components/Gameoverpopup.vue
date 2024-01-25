@@ -26,7 +26,7 @@ let game = useGameStore();
 let router =useRouter()
 function GameEnd() {
   game.gameover = false;
-      SoundHelper.stopMusic("startgame");
+  SoundHelper.stopMusic("startgame");
   console.log(game.gameover);
   router.push('/');
     }

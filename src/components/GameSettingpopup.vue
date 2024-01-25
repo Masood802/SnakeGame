@@ -28,6 +28,7 @@
             <label for="Hard" class="ml-2">Hard</label></div>
         </div>
        <button @click="router.push('/')" class="bg-orange-600 w-32 h-12 my-4">OK</button>
+       
     </div>
     
     </the-popup>

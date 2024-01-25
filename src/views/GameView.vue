@@ -3,9 +3,6 @@
     class="flex items-center justify-center h-screen w-screen bg-[#364532] overflow-hidden"
     @click.stop="() => {}"
   >
-  
-
-
     <div
       id="game-board"
       class="bg-gray-300 relative rounded-md bg-[url('/pix/bkg.jpg')] bg-cover bg-center"
@@ -25,7 +22,11 @@
       </transition-group>
       <FoodItemComponent></FoodItemComponent>
       <SpecialItem v-if="game.specialItem"></SpecialItem>
-     
+     <div class="fixed top-48 right-1 group"> 
+        <img src="../../public/pix/Snake.png" alt="" class="relative ">
+        <img src="../../public/pix/SnakeEyesClosed.png" alt="" class="absolute  top-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in">
+        <img src="../../public/pix/SnakeEyeBalls.png" alt="" class="absolute top-0 z-10 group-hover:opacity-0">
+     </div>
       <Buttons></Buttons>
       <div class="fixed top-4 right-2 flex flex-col">
         <h1 class="text-white text-2xl text-left">
@@ -65,7 +66,6 @@ onBeforeMount(() => {
 });
 onMounted(() => {
   SoundHelper.loadSounds();
-  console.log(game.baseSpeed)
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());
   let data = localStorage.getItem("HighScore");
@@ -77,7 +77,6 @@ onMounted(() => {
   }
   let speed = localStorage.getItem("speed");
   speed=JSON.parse(speed)
-  console.log('speed',speed)
   if (speed) {
     try {
       game.baseSpeed = speed;
