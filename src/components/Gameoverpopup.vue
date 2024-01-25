@@ -23,11 +23,9 @@ import { useRouter } from "vue-router";
 import ThePopup from "./ThePopup.vue";
 import { SoundHelper } from "@/Helpers/SoundHelper";
 let game = useGameStore();
-let router =useRouter()
+let router = useRouter();
 function GameEnd() {
-  game.gameover = false;
   SoundHelper.stopMusic("startgame");
-  console.log(game.gameover);
-  router.push('/');
-    }
+  router.push("/");
+}
 </script>
