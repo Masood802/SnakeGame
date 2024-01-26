@@ -34,8 +34,8 @@
         </h1>
         <h1 class="text-white text-2xl text-left">Score:{{ game.score }}</h1>
       </div>
-      <div class="fixed top-0 left-2 text-white">
-        <h1>{{ game.speed }}</h1>
+      <div class="fixed top-0 left-0 text-white">
+        <speedmeter></speedmeter>
       </div>
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>
@@ -53,6 +53,7 @@ import { Snake } from "../Classes/Snake.js";
 import Buttons from "@/components/Buttons.vue";
 import Gameoverpopup from "@/components/Gameoverpopup.vue";
 import Gamepausepopup from "@/components/Gamepausepopup.vue";
+import speedmeter from "@/components/speedmeter.vue";
 import { SoundHelper } from "@/Helpers/SoundHelper";
 import { useSettingStore } from "@/stores/SettingStore.js";
 import { useRouter } from "vue-router";
