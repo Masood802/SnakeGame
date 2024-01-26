@@ -18,6 +18,8 @@
         <div class="heading">{{ score.date }}</div>
         </div>
     </div>
+
+    
     </div>
     
 </template>

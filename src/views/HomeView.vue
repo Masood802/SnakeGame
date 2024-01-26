@@ -35,6 +35,6 @@ function showsettings() {
    <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 text-center left-3">
     Hall of Fame</p>
   </div>
-     
+     <button @click="router.push('/speed-meter')">SpeedMeter</button>
   </main>
 </template>

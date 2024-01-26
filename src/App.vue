@@ -1,5 +1,6 @@
 <script setup>
-import {  RouterView } from "vue-router";
+import { RouterView } from "vue-router";
+
 
 </script>
 
@@ -11,6 +12,7 @@ import {  RouterView } from "vue-router";
     </transition>
     </router-view>
   </main>
+ 
 </template>
 
 

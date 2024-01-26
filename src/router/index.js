@@ -1,7 +1,8 @@
 import { createRouter, createWebHashHistory } from "vue-router";
 import HomeView from "../views/HomeView.vue";
 import GameSettingpopup from '../components/GameSettingpopup.vue'
-import HallofFame from '../components/HallofFame.vue' 
+import HallofFame from '../components/HallofFame.vue'
+import speedmeter from '../components/speedmeter.vue' 
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -28,7 +29,13 @@ const router = createRouter({
       name: "HallofFame",
       component:HallofFame
       
-    }
+    },
+    {
+      path: '/speed-meter',
+      name: "speedmeter",
+      component:speedmeter
+      
+    },
   ],
 });
 
