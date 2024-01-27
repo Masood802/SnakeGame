@@ -80,36 +80,26 @@
       class="w-[158px] h-[100px] absolute top-[84px] left-[-1px] bg-[#364532] z-40"
     ></div>
   </div>
-  <div class="flex justify-center">
-    <button
-      @click="increase"
-      class="bg-green-700 px-7 py-3 text-white flex items-center justify-center mx-4"
-    >
-      Increase
-    </button>
-    <button
-      @click="decrease"
-      class="bg-red-700 px-7 py-3 text-white flex items-center justify-center"
-    >
-      decrease
-    </button>
-  </div>
+  
 </template>
 
 <script setup>
 import { useGameStore } from "@/stores/gamestore";
-import { ref } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 let game = useGameStore();
 let scale = ref("");
 let angle = ref(0);
 let x = ref(0);
-function increase() {
-  if (angle.value < 180) {
-    scale.value = document.querySelector("#arrow");
-    angle.value = angle.value + 10;
-    scale.value.style.transform = `rotate(${game.speed + "deg"})`;
-  }
-}
+// onMounted(() => {
+//     increase();
+// })
+// function increase() {
+//   if (angle.value< 180) {
+//     scale.value = document.querySelector("#arrow");
+//       scale.value.style.transform = `rotate(${angle.value + "deg"})`;
+//       angle.value += 10;
+//   }
+// }
 function decrease() {
   console.log(angle.value);
   if (angle.value > 0) {

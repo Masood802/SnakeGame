@@ -98,6 +98,8 @@ export class Snake {
     let newBox = new Box();
     newBox.color = game.Fooditem.color;
     this.boxes.splice(1, 0, newBox);
+    //speedmeter function called
+    game.increase();
     this.CheckConsectiveBoxes(1, 2, 3);
     newBox.follow(this.head);
     for (let i = 2; i < this.boxes.length; i++) {

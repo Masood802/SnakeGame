@@ -24,13 +24,15 @@ export const useGameStore = defineStore("game", {
     startGame: false,
     specialItem: null,
     sepcialItemTimer: null,
+    angle: 0,
+    arrow:null
   }),
   getters: {
     BoxSize() {
       return this.gridSize / this.totalBoxes;
     },
     speed() {
-      return Math.min(this.baseSpeed + this.snake.boxes.length * 10, 400);
+      return Math.min(this.baseSpeed + this.snake.boxes.length * 10, 300);
     },
     mushscore() {
       let setting=useSettingStore()
@@ -114,6 +116,14 @@ export const useGameStore = defineStore("game", {
     gameBoardResize() {
       this.gridSize = Math.min(window.innerWidth, window.innerHeight);
     },
+    increase() {
+      if (this.angle < 180) {
+      this.angle += 10;
+      this.arrow = document.querySelector("#arrow");
+      this.arrow.style.transform = `rotate(${this.angle+ "deg"})`;
+     
+  }
+},
     HandleKeyboadEvents(e) {
       const newKey = e.key;
       if (newKey === "Enter") this.Restart();
