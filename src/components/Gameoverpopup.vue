@@ -2,13 +2,18 @@
   <ThePopup>
     <h1 class="text-4xl mb-5">Game Over</h1>
     <h2>Your Score: {{ game.score }}</h2>
-    <input type="text" name="user" class="w-4/5 border-green-700 my-2" v-model="setting.user" placeholder="Enter Your Name"/>
+    <div class="all-center flex-col" :style="{display:setting.showscore}">
+      <input type="text" 
+      name="user" 
+      class="w-4/5 border-green-700 my-2" 
+      v-model="setting.user" 
+      placeholder="Enter Your Name"/>
     <button
       class="bg-green-600 text-center py-2 px-8"
       @click="setting.addscore"
     >
       Add Score
-    </button>
+    </button></div>
     <button
       class="text-lg font-bold bg-green-800 rounded-lg px-8 py-2 my-4 text-slate-50"
       @click.stop="game.Restart"
@@ -35,7 +40,6 @@ let router = useRouter();
 let setting = useSettingStore();
 function GameEnd() {
   SoundHelper.stopMusic("startgame");
-  game.gameover = false;
   router.push("/");
 }
 </script>
