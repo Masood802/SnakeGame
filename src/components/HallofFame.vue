@@ -23,7 +23,7 @@
       <div
         class="text-white flex"
         v-for="(score, index) in setting.scores"
-        :key="score.id"
+        :key="index"
       >
         <div class="heading">{{ index + 1 }}</div>
         <div class="heading">{{ score.user }}</div>
@@ -35,17 +35,18 @@
 </template>
 <script setup>
 import { useSettingStore } from "@/stores/SettingStore";
-import { onMounted, ref } from "vue";
+import { onBeforeMount,  ref } from "vue";
 import { useRouter } from "vue-router";
 let setting = useSettingStore();
 let router = useRouter();
-onMounted(() => {
+onBeforeMount(() => {
   let score = localStorage.getItem("scores");
   score = JSON.parse(score);
   if (score) {
     try {
       setting.scores = score;
       }catch(e) {}
-    }
+  }
+    console.log(2+'2'-1)
 });
 </script>

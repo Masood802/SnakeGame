@@ -13,6 +13,7 @@
       @click="setting.addscore"
     >
       Add Score
+      
     </button></div>
     <button
       class="text-lg font-bold bg-green-800 rounded-lg px-8 py-2 my-4 text-slate-50"
