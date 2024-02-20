@@ -24,8 +24,10 @@
       <SpecialItem v-if="game.specialItem"></SpecialItem>
      <div class="fixed top-48 right-1 group"> 
         <img src="../../public/pix/Snake.png" alt="" class="relative ">
-        <img src="../../public/pix/SnakeEyesClosed.png" alt="" class="absolute  top-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in">
-        <img src="../../public/pix/SnakeEyeBalls.png" alt="" class="absolute top-0 z-10 group-hover:opacity-0">
+        <img src="../../public/pix/SnakeEyesClosed.png" 
+        id="close" alt="" 
+        class="absolute  top-0 opacity-0 group-hover:opacity-100 transition-all duration-300 ease-in">
+        <img src="../../public/pix/SnakeEyeBalls.png"  id="open" alt="" class="absolute top-0 z-10 group-hover:opacity-0">
      </div>
       <Buttons></Buttons>
       <div class="fixed top-4 right-2 flex flex-col">
@@ -83,9 +85,26 @@ onMounted(() => {
       game.baseSpeed = speed;
     }catch(e){}
   }
+  setInterval(() => {
+    snakeanimate();
+  },2500)
 });
 function pauseGame() {
   if (game.startGame === true)
   game.paused=true
+}
+function snakeanimate() {
+  let open = document.querySelector('#open')
+  let close=document.querySelector('#close')
+  if (open.style.opacity <=0)
+  {
+    open.style.opacity = 100
+    close.style.opacity=0
+  }
+  else {
+    open.style.opacity = 0
+      close.style.opacity=100
+    }
+       
 }
 </script>
