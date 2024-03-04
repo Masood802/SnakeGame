@@ -20,59 +20,60 @@
     </div>
 
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-90deg]"
+      class="h-[150px] bg-green-600 w-1 absolute top-1 left-[76px] rotate-[90deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-80deg]"
+      class="h-[150px]  bg-green-600 w-1 absolute top-1 left-[76px] rotate-[-80deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-70deg]"
+      class="h-[150px]  bg-green-600 w-1 absolute top-1 left-[76px] rotate-[-70deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-60deg]"
+      class="h-[150px]  bg-green-600 w-1 absolute top-1 left-[76px] rotate-[-60deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-50deg]"
+      class="h-[150px]  bg-green-600 w-1 absolute top-1 left-[76px] rotate-[-50deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-40deg]"
+      class="h-[150px]  bg-green-600 w-1 absolute top-1 left-[76px] rotate-[-40deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-30deg]"
+      class="h-[150px]  bg-yellow-600 w-1 absolute top-1 left-[76px] rotate-[-30deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-20deg]"
+      class="h-[150px]  bg-yellow-600 w-1 absolute top-1 left-[76px] rotate-[-20deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[-10deg]"
+      class="h-[150px] bg-yellow-600 w-1 absolute top-1 left-[76px] rotate-[-10deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[0deg]"
+      class="h-[150px] bg-yellow-600 w-1 absolute top-1 left-[76px] rotate-[0deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[10deg]"
+      class="h-[150px] bg-yellow-600 w-1 absolute top-1 left-[76px] rotate-[10deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[20deg]"
+      class="h-[150px] bg-yellow-600 w-1 absolute top-1 left-[76px] rotate-[20deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[30deg]"
+      class="h-[150px] bg-yellow-600  w-1 absolute top-1 left-[76px] rotate-[30deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[40deg]"
+      class="h-[150px] bg-red-700 w-1 absolute top-1 left-[76px] rotate-[40deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[50deg]"
+      class="h-[150px] bg-red-700 w-1 absolute top-1 left-[76px] rotate-[50deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[60deg]"
+      class="h-[150px] bg-red-700 w-1 absolute top-1 left-[76px] rotate-[60deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[70deg]"
+      class="h-[150px] bg-red-700 w-1 absolute top-1 left-[76px] rotate-[70deg]"
     ></div>
     <div
-      class="h-[150px] bg-black w-1 absolute top-1 left-[76px] rotate-[80deg]"
+      class="h-[150px] bg-red-700 w-1 absolute top-1 left-[76px] rotate-[80deg]"
     ></div>
+    
     <div
       class="w-[130px] h-[130px] bg-[#364532] absolute rounded-full top-[13px] left-[13px]"
     ></div>
