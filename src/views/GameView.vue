@@ -50,7 +50,7 @@ import BoxComponet from "@/components/BoxComponet.vue";
 import FoodItemComponent from "@/components/FoodItemComponent.vue";
 import SpecialItem from "@/components/SpecialItem.vue";
 import { useGameStore } from "@/stores/gamestore";
-import { onBeforeMount, onMounted } from "vue";
+import { onBeforeMount, onMounted, ref } from "vue";
 import { Snake } from "../Classes/Snake.js";
 import Buttons from "@/components/Buttons.vue";
 import Gameoverpopup from "@/components/Gameoverpopup.vue";
@@ -62,6 +62,7 @@ import { useRouter } from "vue-router";
 let game = useGameStore();
 let setting = useSettingStore();
 let router=useRouter()
+let random=ref(0)
 onBeforeMount(() => {
   game.snake = new Snake();
   game.CreateFoodItem();
@@ -69,6 +70,7 @@ onBeforeMount(() => {
 });
 onMounted(() => {
   SoundHelper.loadSounds();
+  random.value=Math.floor(Math.random()*4000)
   document.addEventListener("keydown", game.HandleKeyboadEvents);
   window.addEventListener("resize", game.gameBoardResize());
   let data = localStorage.getItem("HighScore");
@@ -87,7 +89,7 @@ onMounted(() => {
   }
   setInterval(() => {
     snakeanimate();
-  },2500)
+  },random.value)
 });
 function pauseGame() {
   if (game.startGame === true)
