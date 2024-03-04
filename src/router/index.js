@@ -3,6 +3,7 @@ import HomeView from "../views/HomeView.vue";
 import GameSettingpopup from '../components/GameSettingpopup.vue'
 import HallofFame from '../components/HallofFame.vue'
 import speedmeter from '../components/speedmeter.vue' 
+import gameHelp from '../components/gameHelp.vue'
 const router = createRouter({
   history: createWebHashHistory(import.meta.env.BASE_URL),
   routes: [
@@ -34,6 +35,12 @@ const router = createRouter({
       path: '/speed-meter',
       name: "speedmeter",
       component:speedmeter
+      
+    },
+    {
+      path: '/game-help',
+      name: "gameHelp",
+      component:gameHelp
       
     },
   ],
