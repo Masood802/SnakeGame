@@ -116,11 +116,20 @@ export const useGameStore = defineStore("game", {
     gameBoardResize() {
       this.gridSize = Math.min(window.innerWidth, window.innerHeight);
     },
-    increase() {
+    increase(val) {
       if (this.angle < 180) {
-      this.angle += 10;
+      this.angle += val;
       this.arrow = document.querySelector("#arrow");
-      this.arrow.style.transform = `rotate(${this.angle+ "deg"})`;
+      this.arrow.style.transform = `rotate(${this.angle + "deg"})`;
+     
+  }
+  
+},
+decrease(val){
+if (this.angle > 0) {
+      this.angle -= val;
+      this.arrow = document.querySelector("#arrow");
+      this.arrow.style.transform = `rotate(${this.angle + "deg"})`;
      
   }
 },

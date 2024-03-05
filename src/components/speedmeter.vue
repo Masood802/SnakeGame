@@ -73,6 +73,9 @@
     <div
       class="h-[150px] bg-red-700 w-1 absolute top-1 left-[76px] rotate-[80deg]"
     ></div>
+    <div
+      class="h-[10px] bg-red-700 w-[4px] absolute top-[74px] left-[146px] rotate-[90deg] z-20"
+    ></div>
     
     <div
       class="w-[130px] h-[130px] bg-[#364532] absolute rounded-full top-[13px] left-[13px]"

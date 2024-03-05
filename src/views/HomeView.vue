@@ -15,31 +15,31 @@ function showsettings() {
 
 <template>
   <main
-    class="bg-[url(/pix/peakpx.jpg)]  bg-cover all-center flex h-screen w-screen relative"
+    class="all-center flex h-screen w-full relative"
   >
-    <img src="/pix/title.png" alt="" class="absolute top-8" />
+  <img src="/pix/back2.jpeg" alt="" class="fixed top-0 left-0 w-screen h-screen" />
     <div
       @click="router.push('game-view')"
-      class="bg-[url(/pix/play.png)] bg-cover bg-center rounded-full w-24 h-24  font-bold my-2 relative group"
-    ><p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 left-1">Play Game</p></div>
+      class="bg-[url(/pix/play.png)] bg-cover bg-center rounded-full w-24 h-24  font-bold my-2 relative group top-40"
+    ><p class="absolute top-32 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 left-1">Play Game</p></div>
     <div
-      class="bg-[url(/pix/settings.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group"
+      class="bg-[url(/pix/settings.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group top-40"
       @click="showsettings"
     >
-  <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 text-center left-3">Settings</p>
+  <p class="absolute top-32 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 text-center left-3">Settings</p>
   </div>
      <div
-      class="bg-[url(/pix/hallOfFame.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group"
+      class="bg-[url(/pix/hallOfFame.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group top-40"
       @click="router.push('/hall-of-fame')"
     >
-   <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 text-center left-3">
+   <p class="absolute top-32 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 text-center left-3">
     Hall of Fame</p>
   </div>
   <div
-      class="bg-[url(/pix/help.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group"
+      class="bg-[url(/pix/help.png)] bg-cover bg-center shadow rounded-full w-24 h-24 relative group top-40"
       @click="router.push('/game-help')"
     >
-   <p class="absolute top-36 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 text-center left-7">
+   <p class="absolute top-32 opacity-0 group-hover:top-24 group-hover:opacity-100 transition-all duration-300 text-center left-7">
     Help</p>
   </div>
   </main>

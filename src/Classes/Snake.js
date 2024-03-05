@@ -64,21 +64,24 @@ export class Snake {
       switch (game.specialItem?.item) {
         case "cheeta":
           game.baseSpeed =game.baseSpeed-20;
+          game.decrease(20);
           console.log("speedIncreased", game.speed);
           break;
         case "increase":
           this.boxes.push(new Box());
           this.ChecktailConsectiveBoxes();
-          console.log(
-            "box added",
-            this.boxes[this.tail].color,
-            this.boxes[this.tail - 1].color,
-            this.boxes[this.tail - 2].color
-          );
+          game.increase(10);
           break;
         case "decrease":
-          if (this.boxes.length === 4) return;
+          if (this.boxes.length === 4) 
+          {
+            window.clearInterval(game.sepcialItemTimer);
+            game.CreateSpecialItem();
+            game.StartSpecialItemTimer();
+            return;
+          };
           this.boxes.pop();
+          game.decrease(10);
           console.log("box poped");
           break;
         case "+200":
@@ -99,7 +102,7 @@ export class Snake {
     newBox.color = game.Fooditem.color;
     this.boxes.splice(1, 0, newBox);
     //speedmeter function called
-    game.increase();
+    game.increase(10);
     this.CheckConsectiveBoxes(1, 2, 3);
     newBox.follow(this.head);
     for (let i = 2; i < this.boxes.length; i++) {
@@ -145,6 +148,7 @@ export class Snake {
       game.showConfetti(this.boxes[b]);
       this.boxes.splice(1, 3);
       game.score += 100;
+      game.decrease(30)
       game.CheckHighScore();
       SoundHelper.play("pop");
     }
