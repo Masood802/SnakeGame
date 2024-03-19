@@ -39,6 +39,7 @@
       <div class="fixed top-0 left-0 text-white">
         <speedmeter></speedmeter>
       </div>
+      <Highscore></Highscore>
       <Gameoverpopup v-if="game.gameover"></Gameoverpopup>
       <Gamepausepopup></Gamepausepopup>
     </div>
@@ -54,6 +55,7 @@ import { onBeforeMount, onMounted, ref } from "vue";
 import { Snake } from "../Classes/Snake.js";
 import Buttons from "@/components/Buttons.vue";
 import Gameoverpopup from "@/components/Gameoverpopup.vue";
+import Highscore from "@/components/Highscore.vue";
 import Gamepausepopup from "@/components/Gamepausepopup.vue";
 import speedmeter from "@/components/speedmeter.vue";
 import { SoundHelper } from "@/Helpers/SoundHelper";

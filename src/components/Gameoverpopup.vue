@@ -15,6 +15,7 @@
       Add Score
       
     </button></div>
+    
     <button
       class="text-lg font-bold bg-green-800 rounded-lg px-8 py-2 my-4 text-slate-50"
       @click.stop="game.Restart"
@@ -31,16 +32,19 @@
 </template>
 
 <script setup>
+
 import { useGameStore } from "@/stores/gamestore";
 import { useRouter } from "vue-router";
 import ThePopup from "./ThePopup.vue";
 import { SoundHelper } from "@/Helpers/SoundHelper";
 import { useSettingStore } from "@/stores/SettingStore";
+
 let game = useGameStore();
 let router = useRouter();
 let setting = useSettingStore();
 function GameEnd() {
   SoundHelper.stopMusic("startgame");
+  
   router.push("/");
 }
 </script>

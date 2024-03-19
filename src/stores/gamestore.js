@@ -25,7 +25,11 @@ export const useGameStore = defineStore("game", {
     specialItem: null,
     sepcialItemTimer: null,
     angle: 0,
-    arrow:null
+    arrow:null,
+    ishighscore:false,
+    cong:'Congrations...',
+    text2:'NEW HIGH SCORE'
+
   }),
   getters: {
     BoxSize() {
@@ -53,7 +57,9 @@ export const useGameStore = defineStore("game", {
       console.log('snake length',this.snake.boxes.length)
     },
     CheckHighScore() {
-      if (this.score > this.highScore) this.highScore = this.score;
+      if (this.score > this.highScore) 
+      {this.highScore = this.score;
+      this.confetti()}
       localStorage.setItem("HighScore", this.highScore);
     },
     Restart() {
@@ -132,6 +138,13 @@ if (this.angle > 0) {
       this.arrow.style.transform = `rotate(${this.angle + "deg"})`;
      
   }
+},
+confetti(){
+        this.ishighscore=true
+        setTimeout(()=>{
+        this.cong=''
+        this.text2=''
+        },3500)
 },
     HandleKeyboadEvents(e) {
       const newKey = e.key;

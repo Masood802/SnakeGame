@@ -27,6 +27,13 @@
             id="Hard" v-model="setting.gameDifficulty" @change="game.changeSpeed">
             <label for="Hard" class="ml-2">Hard</label></div>
         </div>
+        <div class="w-full flex justify-start items-center">
+            
+            <label for="zenmode" class="ml-20 mr-2">Zen Mode</label>
+        <input type="radio" name="zenmode" value="zen" 
+            id="zen" v-model="setting.zenmode">
+        </div>
+      
        <button @click="router.push('/')" class="bg-orange-600 w-32 h-12 my-4 text-white">OK</button>
        
     </div>
@@ -34,10 +41,12 @@
     </the-popup>
 </template>
 <script setup>
+
 import { useGameStore } from '@/stores/gamestore';
 import { useSettingStore } from '@/stores/SettingStore'
 import { useRouter } from 'vue-router';
 import ThePopup from './ThePopup.vue';
+
 let setting = useSettingStore();
 let router = useRouter();
 let game = useGameStore();

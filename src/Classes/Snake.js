@@ -23,11 +23,12 @@ export class Snake {
     const game = useGameStore();
     let setting = useSettingStore();
     let firstBox = this.boxes[0];
-    // if (setting.zenmode === true) {
-    //   this.zenmodeplay();
-    //   return;
-    // }
-    return (
+    if (setting.zenmode === true) {
+      this.zenmodeplay();
+      return;
+    }
+    else
+   return (
       (firstBox.col === game.totalBoxes - 1 && game.snake.direction === "R") ||
       (firstBox.col === 0 && game.snake.direction === "L") ||
       (firstBox.row === game.totalBoxes - 1 && game.snake.direction === "D") ||
@@ -110,6 +111,7 @@ export class Snake {
       box.Gotolastpositon();
     }
     game.score = game.score  + game.mushscore;
+    console.log('score=',game.score,'mush',game.mushscore)
     game.CheckHighScore();
     game.CreateFoodItem();
     game.StartFoodTimer();
@@ -135,8 +137,16 @@ export class Snake {
     }
   }
   zenmodeplay() {
+    let game=useGameStore()
     if (this.head.col === game.totalBoxes) {
+      console.log('zenmode',this.head.col,game.totalBoxes)
       this.head.col = 0;
+      this.head.move(this.direction);
+    }
+    if(this.head.col===-1)
+    {
+      this.head.col=game.totalBoxes
+       this.head.move(this.direction);
     }
   }
   CheckConsectiveBoxes(a, b, c) {
