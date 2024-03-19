@@ -87,7 +87,7 @@ export const useGameStore = defineStore("game", {
       this.foodTimer = setInterval(() => {
         if (this.paused || this.gameover) return;
         this.CreateFoodItem();
-      },2000);
+      }, 3500);
     },
     StartSpecialItemTimer() {
       if (this.sepcialItemTimer) clearInterval(this.sepcialItemTimer);
@@ -144,7 +144,7 @@ confetti(){
         setTimeout(()=>{
         this.cong=''
         this.text2=''
-        },15000)
+        },2000)
 },
     HandleKeyboadEvents(e) {
       const newKey = e.key;
