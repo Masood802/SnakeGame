@@ -53,13 +53,13 @@ export const useGameStore = defineStore("game", {
       this.StartFoodTimer();
       this.StartSpecialItemTimer();
       SoundHelper.PlaybgMusic("startgame");
-      console.log('speed playgame', this.speed)
-      console.log('snake length',this.snake.boxes.length)
     },
     CheckHighScore() {
       if (this.score > this.highScore) 
-      {this.highScore = this.score;
-      this.confetti()}
+      {
+        this.highScore = this.score;
+        this.confetti()
+      }
       localStorage.setItem("HighScore", this.highScore);
     },
     Restart() {
@@ -87,7 +87,7 @@ export const useGameStore = defineStore("game", {
       this.foodTimer = setInterval(() => {
         if (this.paused || this.gameover) return;
         this.CreateFoodItem();
-      }, 3500);
+      }, 6000);
     },
     StartSpecialItemTimer() {
       if (this.sepcialItemTimer) clearInterval(this.sepcialItemTimer);
